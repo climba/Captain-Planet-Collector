@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
     
     // Establish a target number
-    var targetNumber = 50;
+    var targetNumber = Math.floor(Math.random() * 80) + 20;
 
     // Set the number-to-gess header to match the targetNumber
     // This allow us to change the HTML to match the value in the javascript
@@ -44,7 +44,8 @@ $(document).ready(function() {
         var yourWins = 0;
         var yourLosses = 0;
 
-    $(".cap-images").on("click", function() {
+    $(document).on("click", ".cap-images", function(event){
+    
 
         // Determining the captain's value requires us to extract the value from the data attribute.
         // Using the $(this) keyword specifies that we should be extracting the captain value of the clicked captain.
