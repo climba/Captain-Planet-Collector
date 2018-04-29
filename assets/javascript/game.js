@@ -51,6 +51,8 @@ $(document).ready(function() {
         // Using the .attr("data-captainvalue") allows us to grab the value out of the "data-captainvalue" attribute.
         // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
 
+        
+
         var captainValue = ($(this).attr("data-captainvalue"));
         captainValue = parseInt(captainValue);
         // We then add the captainValue to the user's "counter" which is a global variable.
@@ -60,8 +62,10 @@ $(document).ready(function() {
         counter += captainValue;
         // console.log(captainValue)
 
-        // Output the number of times the Captin has been clicked
+        // Output the resulting score of combined clicks
         $("#your-score").html(counter);
+        // Output the value of the last click
+        $("#your-guess").html(captainValue);
 
         // Here we created some logic to "check" if the click counter matches the targetNumber.
         // Remember, this click event will be triggered with each click.
