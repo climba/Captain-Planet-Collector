@@ -35,7 +35,9 @@
     <div class="row">
 
       <!-- Left Panel -->
-      <div class="col-lg-5">
+      <div class="col-lg-6">
+          <div class="row">
+          <div class="col-lg-12">
         <!-- Controls (Superpower Grow/Shrink)-->
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -43,14 +45,31 @@
           </div>
           <div class="panel-body">
             <div class="text-center">
-              <h4>Number to Guess: <span id="number-to-guess"></span></h4>
+              <h4>Number to Guess is: <span id="number-to-guess"></span></h4>
             </div>
           </div>
         </div>
       </div>
-
+      <div class="col-lg-12">
+        <!-- Controls (Superpower Grow/Shrink)-->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Wins and Losses</h3>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+              <h4>You guessed: <span id="your-guess"></span></h4>
+              <h4>Your new score is: <span id="your-score"></span></h4>
+              <h4>Wins: <span id="your-wins"></span></h4>
+              <h4>Losses: <span id="your-losses"></span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       <!-- Right Panel (Captain Planet Hero)-->
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Click it BITC#3$!</h3>
@@ -92,7 +111,7 @@
         // This allow us to change the HTML to match the value in the javascript
         $("#number-to-guess").text(targetNumber);
 
-        var counter = 0;
+        
 
         // Here we select the numbers in numberOptions to start
         // We set this number at the start of the game
@@ -105,11 +124,15 @@
           for(var i = 0; i < captainArray.length; i++){
             var captainImg = $("<img>"); // Make a new image element
             captainImg.attr("src", captainArray[i]); // Make the src point to one of the addresses
+            captainImg.attr('height', '89px');
             captainImg.attr('class', 'cap-images');
             captainImg.attr('data-captainvalue', Math.floor(Math.random() * 12) + 2) // Assign a data value to a random number you can extract when clicked that won't be 1
             $('#targetDiv').append(captainImg); //append each image to a Div in your HTML
           }
         
+          var counter = 0;
+          var yourWins = 0;
+          var yourLosses = 0;
 
         $(".cap-images").on("click", function() {
 
@@ -128,7 +151,7 @@
             // console.log(captainValue)
 
             // Output the number of times the Captin has been clicked
-            alert("Your new score is " + counter + "!");
+            $("#your-score").html(counter);
 
             // Here we created some logic to "check" if the click counter matches the targetNumber.
             // Remember, this click event will be triggered with each click.
@@ -136,12 +159,14 @@
             if (counter === targetNumber) {
 
                 // If numbers match we tell the user they won!
-                alert("You win!");
+                yourWins++;
+                $("#your-wins").html(yourWins);
                 resetGame();
             }
             // Added this else if statement to tell the user they lost in the event their counter goes over the target guess
             else if (counter >= targetNumber) {
-                alert("You loose!!");
+                yourLosses++;
+                $("#your-losses").html(yourLosses);
                 resetGame();
             }
 
