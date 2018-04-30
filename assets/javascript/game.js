@@ -5,6 +5,7 @@ $(document).ready(function() {
     var audioElement = document.createElement("audio");
     audioElement.setAttribute("src", "assets/captainplanet24.mp3");        
 
+
     // Theme buttons
     // Play button
     $(".theme-button").on("click", function() {
@@ -15,10 +16,12 @@ $(document).ready(function() {
         audioElement.pause();
     });
     
+
     // Establish a target number that user has to reach each game
     // We set this number at the start of the game
     var targetNumber = Math.floor(Math.random() * 80) + 20;
 
+    
     // Set the number-to-guess div in the HTML to match the generated targetNumber
     // This allows changes the HTML to match the value in the javascript everytime it is generated
     $("#number-to-guess").text(targetNumber);
@@ -41,7 +44,6 @@ $(document).ready(function() {
         $('#targetDiv').append(captainImg); 
         }
     
-
         // Begin by creating the variables and assigning them a score of 0 to start
         var captainValue = 0;
         var counter = 0;
