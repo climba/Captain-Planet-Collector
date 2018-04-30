@@ -5,7 +5,7 @@ $(document).ready(function() {
     var audioElement = document.createElement("audio");
     audioElement.setAttribute("src", "assets/captainplanet24.mp3");        
 
-    // theme buttons
+    // Theme buttons
     // Play button
     $(".theme-button").on("click", function() {
         audioElement.play();
@@ -41,6 +41,7 @@ $(document).ready(function() {
         $('#targetDiv').append(captainImg); 
         }
     
+
         // Begin by creating the variables and assigning them a score of 0 to start
         var captainValue = 0;
         var counter = 0;
@@ -58,21 +59,25 @@ $(document).ready(function() {
         var captainValue = ($(this).attr("data-captainvalue"));
         captainValue = parseInt(captainValue);
         
+
         // We then add the captainValue to the user's "counter" which is a global variable.
         // Every click, from every captain adds to the global counter.
         // Each time user clicks a Captain the counter goes up by the number that was assigned to that captain in that game
         counter += captainValue;
+
 
         // Renders the resulting score of combined clicks into the HTML element with id your-score
         $("#your-score").html(counter);
         // Renders the last clicks value into the HTML element with id your-guess
         $("#your-guess").html(captainValue);
 
+
         // Here we create and if statement to "check" if the click counter matches the targetNumber.
         // Remember, this click event will be triggered with each click.
         // With each click the counter will increase by the value that was assigned to that captain in that game 
         //          and be re-evaluated against target.
         if (counter === targetNumber) {
+
 
             // If numbers match we tell the user they won! + we add that win to the HTML element with id of your-wins
             yourWins++;
@@ -87,14 +92,11 @@ $(document).ready(function() {
             resetGame();
         }
 
+
         // Resets the game by returning the counter to 0
         function resetGame() {
             counter = 0;
-
         }
-
     });
-
-
 });
 
